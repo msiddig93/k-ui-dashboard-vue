@@ -14,7 +14,7 @@
           Blank
         </h1>
         <a
-          href="https://github.com/kamona-wd/k-ui-dashboard-alpine"
+          href="https://github.com/kamona-wd/k-ui-dashboard-vue"
           target="_blank"
           class="btn btn-md btn-primary"
         >

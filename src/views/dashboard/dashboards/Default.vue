@@ -14,7 +14,7 @@
           Default
         </h1>
         <a
-          href="https://github.com/kamona-wd/k-ui-dashboard-alpine"
+          href="https://github.com/kamona-wd/k-ui-dashboard-vue"
           target="_blank"
           class="btn btn-md btn-primary"
         >
@@ -23,8 +23,26 @@
       </div>
     </template>
     <!-- Content -->
-    <div>
-      <h1 class="title-1 text-contrast-high">Soon!</h1>
+    <div class="grid grid-cols-1 gap-6 xl:grid-cols-3">
+      <!--  -->
+      <div class="grid grid-cols-1 gap-6 xl:col-span-2">
+        <!-- Stats Cards -->
+        <section class="grid grid-cols-1 gap-6 md:grid-cols-2">
+          <h2 class="sr-only">Quick statistics</h2>
+          <DefaultStatisticsCard
+            v-for="(card, i) in quickStatisticsCards"
+            :key="i"
+            :card="card"
+          />
+        </section>
+      </div>
+
+      <!--  -->
+      <div
+        class="grid grid-cols-1 gap-6 md:grid-cols-2 xl:grid-cols-1 xl:col-span-1"
+      >
+        <!--  -->
+      </div>
     </div>
   </AppLayout>
 </template>
@@ -32,6 +50,8 @@
 <script setup>
 import AppLayout from '../../../components/layouts/AppLayout.vue'
 import Breadcrumb from '../../../components/global/Breadcrumb.vue'
+import DefaultStatisticsCard from '../../../components/cards/DefaultStatisticsCard.vue'
+import { quickStatisticsCards } from '../../../data/defaultPage'
 
 const breadcrumbItems = [
   {

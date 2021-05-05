@@ -76,7 +76,7 @@ const links = [
       },
       {
         title: 'Project Management',
-        isActive: isActive('ProjectManagement'),
+        isActive: isActive('ProjectManagementDashboard'),
         link: { name: 'ProjectManagementDashboard' },
       },
       {

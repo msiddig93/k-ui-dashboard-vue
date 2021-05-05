@@ -22,7 +22,7 @@
     <section
       v-if="show"
       :aria-labelledby="title"
-      class="fixed inset-y-0 z-20 w-full max-w-xs bg-light-bg dark:bg-dark-elevation-2 sm:max-w-md"
+      class="fixed inset-y-0 z-20 w-full max-w-xs bg-light-bg dark:bg-dark-elevation-5 sm:max-w-md"
       :class="{
         'right-0 rtl:left-0 rtl:right-auto': !left,
         'left-0 rtl:right-0 rtl:left-auto': left,
