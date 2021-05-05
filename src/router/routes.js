@@ -1,5 +1,6 @@
 import Home from '../views/Home.vue'
 import pages from './pages'
+import dashboards from './dashboards'
 
 export default [
   {
@@ -7,5 +8,6 @@ export default [
     path: '/',
     component: Home,
   },
+  ...dashboards,
   ...pages,
 ]

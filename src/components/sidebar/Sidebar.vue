@@ -29,6 +29,11 @@
       <!-- Links -->
       <div class="flex-1 px-4 mt-6 overflow-hidden hover:overflow-auto">
         <!--  -->
+        <div class="pb-4 space-y-2">
+          <div class="relative" v-for="(link, i) in links" :key="i">
+            <SidebarDropdown :link="link" />
+          </div>
+        </div>
       </div>
 
       <!-- Footer -->
@@ -46,6 +51,57 @@ import useState from '../../hooks/useState'
 import MiniBar from './MiniBar.vue'
 import Logo from '../global/Logo.vue'
 import Backdrop from '../global/Backdrop.vue'
+import SidebarLink from './SidebarLink.vue'
+import { HomeIcon } from '@heroicons/vue/outline'
+import SidebarDropdown from './SidebarDropdown.vue'
 
 const { isSidebarOpen } = useState()
+
+const isCurrent = (path = '') => {
+  return useRouter().currentRoute.value.path.startsWith(`/${path}`)
+}
+
+const isActive = (name = '') => {
+  return useRouter().currentRoute.value.name == name
+}
+
+const links = [
+  {
+    title: 'Dashboards',
+    isCurrent: isCurrent('dashboard/dashboards'),
+    subLinks: [
+      {
+        title: 'Default',
+        isActive: isActive('DefaultDashboard'),
+        link: { name: 'DefaultDashboard' },
+      },
+      {
+        title: 'Project Management',
+        isActive: isActive('ProjectManagement'),
+        link: { name: 'ProjectManagementDashboard' },
+      },
+      {
+        title: 'E-Commerce',
+        isActive: isActive('E-CommerceDashboard'),
+        link: { name: 'E-CommerceDashboard' },
+      },
+    ],
+    svgPath:
+      'M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6',
+  },
+
+  {
+    title: 'Pages',
+    isCurrent: isCurrent('dashboard/pages'),
+    subLinks: [
+      {
+        title: 'Blank',
+        isActive: isActive('Blank'),
+        link: { name: 'Blank' },
+      },
+    ],
+    svgPath:
+      'M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z',
+  },
+]
 </script>

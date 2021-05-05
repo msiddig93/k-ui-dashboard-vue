@@ -4,7 +4,7 @@
   >
     <h1 class="text-5xl font-medium">In Progress</h1>
     <router-link
-      to="/dashboard/pages/blank"
+      :to="{ name: 'DefaultDashboard' }"
       class="font-medium text-light-text-highlight hover:underline"
     >
       See what has been done
