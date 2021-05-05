@@ -178,10 +178,158 @@
       </transition>
     </Menu>
 
+    <!-- Desktop nav links -->
+    <nav
+      aria-label="Secondary"
+      class="items-center hidden ml-8 sm:flex rtl:ml-0 rtl:mr-8"
+    >
+      <Menu as="div" class="relative" v-slot="{ open }">
+        <MenuButton
+          class="flex items-center text-sm font-medium transition-colors text-light-text-contrast-medium hover:text-light-text-contrast-high dark:text-dark-text-contrast-medium dark:hover:text-dark-text-contrast-high"
+        >
+          <span class="mr-1 rtl:mr-0 rtl:ml-1">Author</span>
+          <svg
+            aria-hidden="true"
+            class="w-4 h-4 text-gray-500 transition-transform transform"
+            :class="open ? 'rotate-180' : ''"
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 20 20"
+            fill="currentColor"
+          >
+            <path
+              fill-rule="evenodd"
+              d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+              clip-rule="evenodd"
+            />
+          </svg>
+        </MenuButton>
+        <transition
+          enter-active-class="transition duration-100 ease-out"
+          enter-from-class="transform scale-95 opacity-0"
+          enter-to-class="transform scale-100 opacity-100"
+          leave-active-class="transition duration-75 ease-in"
+          leave-from-class="transform scale-100 opacity-100"
+          leave-to-class="transform scale-95 opacity-0"
+        >
+          <MenuItems
+            class="absolute left-0 w-56 py-1 mt-2 origin-top-left rounded-md shadow-lg rtl:right-0 rtl:origin-top-right bg-light-bg dark:bg-dark-elevation-5 dark:shadow-dark-lg focus:outline-none"
+          >
+            <MenuItem v-slot="{ active }">
+              <a
+                href="https://twitter.com/ak_kamona"
+                target="_blank"
+                class="flex items-center px-4 py-2 text-body-small text-contrast-high"
+                :class="active ? 'bg-gray-100  dark:bg-dark-elevation-1' : ''"
+              >
+                <span>Twitter</span>
+                <ExternalLinkIcon
+                  aria-hidden="true"
+                  class="w-4 h-4 ml-3 rtl:ml-0 rtl:mr-3"
+                />
+              </a>
+            </MenuItem>
+            <MenuItem v-slot="{ active }">
+              <a
+                href="https://github.com/Kamona-WD"
+                target="_blank"
+                class="flex items-center px-4 py-2 text-body-small text-contrast-high"
+                :class="active ? 'bg-gray-100  dark:bg-dark-elevation-1' : ''"
+              >
+                <span>Github</span>
+                <ExternalLinkIcon
+                  aria-hidden="true"
+                  class="w-4 h-4 ml-3 rtl:ml-0 rtl:mr-3"
+                />
+              </a>
+            </MenuItem>
+          </MenuItems>
+        </transition>
+      </Menu>
+      <Menu as="div" class="relative ml-4 rtl:ml-0 rtl:mr-4" v-slot="{ open }">
+        <MenuButton
+          class="flex items-center text-sm font-medium transition-colors text-light-text-contrast-medium hover:text-light-text-contrast-high dark:text-dark-text-contrast-medium dark:hover:text-dark-text-contrast-high"
+        >
+          <span class="mr-1 rtl:mr-0 rtl:ml-1">Projects</span>
+          <svg
+            aria-hidden="true"
+            class="w-4 h-4 text-gray-500 transition-transform transform"
+            :class="open ? 'rotate-180' : ''"
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 20 20"
+            fill="currentColor"
+          >
+            <path
+              fill-rule="evenodd"
+              d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+              clip-rule="evenodd"
+            />
+          </svg>
+        </MenuButton>
+        <transition
+          enter-active-class="transition duration-100 ease-out"
+          enter-from-class="transform scale-95 opacity-0"
+          enter-to-class="transform scale-100 opacity-100"
+          leave-active-class="transition duration-75 ease-in"
+          leave-from-class="transform scale-100 opacity-100"
+          leave-to-class="transform scale-95 opacity-0"
+        >
+          <MenuItems
+            class="absolute left-0 w-full py-1 mt-2 origin-top-left rounded-md shadow-lg rtl:right-0 bg-light-bg min-w-max dark:bg-dark-elevation-5 dark:shadow-dark-lg focus:outline-none"
+          >
+            <MenuItem v-slot="{ active }">
+              <a
+                href="https://github.com/Kamona-WD/kwd-dashboard"
+                target="_blank"
+                class="flex items-center px-4 py-2 text-body-small text-contrast-high"
+                :class="active ? 'bg-gray-100  dark:bg-dark-elevation-1' : ''"
+              >
+                <span>K-WD Dashboard</span>
+                <ExternalLinkIcon
+                  aria-hidden="true"
+                  class="w-4 h-4 ml-3 rtl:ml-0 rtl:mr-3"
+                />
+              </a>
+            </MenuItem>
+            <MenuItem v-slot="{ active }">
+              <a
+                href="https://github.com/Kamona-WD/starter-dashboard-layout"
+                target="_blank"
+                class="flex items-center px-4 py-2 text-body-small text-contrast-high"
+                :class="active ? 'bg-gray-100  dark:bg-dark-elevation-1' : ''"
+              >
+                <span>Starter Dashboard Layout</span>
+                <ExternalLinkIcon
+                  aria-hidden="true"
+                  class="w-4 h-4 ml-3 rtl:ml-0 rtl:mr-3"
+                />
+              </a>
+            </MenuItem>
+            <MenuItem v-slot="{ active }">
+              <a
+                href="https://github.com/Kamona-WD/starter-dashboard-layout-vue"
+                target="_blank"
+                class="flex items-center px-4 py-2 text-body-small text-contrast-high"
+                :class="active ? 'bg-gray-100  dark:bg-dark-elevation-1' : ''"
+              >
+                <span>Starter Dashboard Layout (VueJS)</span>
+                <ExternalLinkIcon
+                  aria-hidden="true"
+                  class="w-4 h-4 ml-3 rtl:ml-0 rtl:mr-3"
+                />
+              </a>
+            </MenuItem>
+          </MenuItems>
+        </transition>
+      </Menu>
+    </nav>
+
     <!-- Right buttons -->
     <div class="flex items-center ml-auto rtl:ml-0 rtl:mr-auto">
       <!-- Search button -->
-      <button class="hidden mr-4 sm:block icon-btn rtl:mr-0 rtl:ml-4">
+      <button
+        @click="isSearchModalOpen = true"
+        class="hidden mr-4 sm:block icon-btn rtl:mr-0 rtl:ml-4"
+      >
         <span class="sr-only">Open search modal</span>
         <SearchIcon aria-hidden="true" class="w-6 h-6" />
       </button>
@@ -249,6 +397,14 @@
 
 <script setup>
 import Logo from '../global/Logo.vue'
-import { SearchIcon, MenuAlt1Icon, ChevronUpIcon } from '@heroicons/vue/outline'
 import { Menu, MenuButton, MenuItems, MenuItem } from '@headlessui/vue'
+import useState from '../../hooks/useState'
+import {
+  SearchIcon,
+  MenuAlt1Icon,
+  ChevronUpIcon,
+  ExternalLinkIcon,
+} from '@heroicons/vue/outline'
+
+const { isSearchModalOpen } = useState()
 </script>

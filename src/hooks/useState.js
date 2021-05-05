@@ -29,6 +29,8 @@ const toggleSidebar = () => {
   isSidebarOpen.value = !isSidebarOpen.value
 }
 
+const isSearchModalOpen = ref(false)
+
 export default function useState() {
   return {
     isDark,
@@ -36,5 +38,6 @@ export default function useState() {
     isRTL,
     isSidebarOpen,
     toggleSidebar,
+    isSearchModalOpen,
   }
 }

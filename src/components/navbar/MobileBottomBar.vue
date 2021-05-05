@@ -3,7 +3,7 @@
     class="fixed inset-x-0 bottom-0 z-10 flex items-center justify-between px-4 py-2 border-t border-light-border bg-light-bg sm:hidden dark:bg-dark-elevation-2 dark:border-dark-border"
   >
     <!-- Search button -->
-    <button class="icon-btn">
+    <button @click="isSearchModalOpen = true" class="icon-btn">
       <span class="sr-only">Open search modal</span>
       <SearchIcon aria-hidden="true" class="w-6 h-6" />
     </button>
@@ -24,5 +24,5 @@ import useState from '../../hooks/useState'
 import Logo from '../global/Logo.vue'
 import { SearchIcon, MenuIcon } from '@heroicons/vue/outline'
 
-const { isSidebarOpen } = useState()
+const { isSidebarOpen, isSearchModalOpen } = useState()
 </script>

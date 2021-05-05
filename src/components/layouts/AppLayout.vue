@@ -20,17 +20,26 @@
         </div>
       </div>
     </div>
+
+    <SearchModal :show="isSearchModalOpen" @close="isSearchModalOpen = false" />
   </div>
 </template>
 
 <script setup>
-import { onMounted, onUnmounted } from 'vue'
+import { onMounted, onUnmounted, ref } from 'vue'
 import useState from '../../hooks/useState'
 import Sidebar from '../sidebar/Sidebar.vue'
 import Navbar from '../navbar/Navbar.vue'
 import MobileBottomBar from '../navbar/MobileBottomBar.vue'
+import SearchModal from '../modals/SearchModal.vue'
 
-const { isSidebarOpen, toggleSidebar, isDark, isRTL } = useState()
+const {
+  isSidebarOpen,
+  toggleSidebar,
+  isDark,
+  isRTL,
+  isSearchModalOpen,
+} = useState()
 
 const checkScreen = () => {
   if (window.innerWidth <= 1280) {
