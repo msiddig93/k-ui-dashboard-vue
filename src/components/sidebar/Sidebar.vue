@@ -52,7 +52,6 @@ import MiniBar from './MiniBar.vue'
 import Logo from '../global/Logo.vue'
 import Backdrop from '../global/Backdrop.vue'
 import SidebarLink from './SidebarLink.vue'
-import { HomeIcon } from '@heroicons/vue/outline'
 import SidebarDropdown from './SidebarDropdown.vue'
 
 const { isSidebarOpen } = useState()

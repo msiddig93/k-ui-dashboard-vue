@@ -16,7 +16,16 @@
 
         <!--  -->
         <div class="flex-1 px-4 pt-4">
-          <slot></slot>
+          <!-- Breadcrumb -->
+          <slot name="breadcrumb"></slot>
+          <main class="flex-1 mt-4" aria-labelledby="page-title">
+            <!-- Page title -->
+            <slot name="pageTitle"></slot>
+            <!-- Page content -->
+            <div class="mt-6">
+              <slot></slot>
+            </div>
+          </main>
         </div>
       </div>
     </div>
