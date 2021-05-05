@@ -148,7 +148,7 @@
     @apply text-xs font-medium;
   }
 
-  .text-contrast-hight {
+  .text-contrast-high {
     @apply text-light-text-contrast-high dark:text-dark-text-contrast-high;
   }
 

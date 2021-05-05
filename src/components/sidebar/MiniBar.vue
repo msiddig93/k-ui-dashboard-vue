@@ -40,19 +40,19 @@
       </button>
 
       <!-- Settings button -->
-      <button class="icon-btn">
+      <button class="icon-btn" @click="isSettingsPanelOpen = true">
         <span class="sr-only">Open settings panel</span>
         <CogIcon aria-hidden="true" class="w-6 h-6" />
       </button>
 
       <!-- Notifications button -->
-      <button class="icon-btn">
+      <button class="icon-btn" @click="isNotificationsPanelOpen = true">
         <span class="sr-only">Open notifications panel</span>
         <BellIcon aria-hidden="true" class="w-6 h-6" />
       </button>
 
       <!-- Recent activity button -->
-      <button class="icon-btn">
+      <button class="icon-btn" @click="isActivityPanelOpen = true">
         <span class="sr-only">Open recent activity panel</span>
         <ClockIcon aria-hidden="true" class="w-6 h-6" />
       </button>
@@ -81,5 +81,14 @@ import {
   ChevronDoubleLeftIcon,
 } from '@heroicons/vue/outline'
 
-const { isSidebarOpen, toggleSidebar, isDark, toggleTheme, isRTL } = useState()
+const {
+  isSidebarOpen,
+  toggleSidebar,
+  isDark,
+  toggleTheme,
+  isRTL,
+  isSettingsPanelOpen,
+  isNotificationsPanelOpen,
+  isActivityPanelOpen,
+} = useState()
 </script>

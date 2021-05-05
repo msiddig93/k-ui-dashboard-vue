@@ -22,6 +22,19 @@
     </div>
 
     <SearchModal :show="isSearchModalOpen" @close="isSearchModalOpen = false" />
+    <SettingsPanel
+      :show="isSettingsPanelOpen"
+      @close="isSettingsPanelOpen = false"
+    />
+    <NotificationsPanel
+      :show="isNotificationsPanelOpen"
+      @close="isNotificationsPanelOpen = false"
+    />
+    <ActivityPanel
+      :show="isActivityPanelOpen"
+      @close="isActivityPanelOpen = false"
+      left
+    />
   </div>
 </template>
 
@@ -32,6 +45,9 @@ import Sidebar from '../sidebar/Sidebar.vue'
 import Navbar from '../navbar/Navbar.vue'
 import MobileBottomBar from '../navbar/MobileBottomBar.vue'
 import SearchModal from '../modals/SearchModal.vue'
+import SettingsPanel from '../panels/SettingsPanel.vue'
+import NotificationsPanel from '../panels/NotificationsPanel.vue'
+import ActivityPanel from '../panels/ActivityPanel.vue'
 
 const {
   isSidebarOpen,
@@ -39,6 +55,9 @@ const {
   isDark,
   isRTL,
   isSearchModalOpen,
+  isSettingsPanelOpen,
+  isNotificationsPanelOpen,
+  isActivityPanelOpen,
 } = useState()
 
 const checkScreen = () => {

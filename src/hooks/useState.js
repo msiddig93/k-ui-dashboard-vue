@@ -30,6 +30,9 @@ const toggleSidebar = () => {
 }
 
 const isSearchModalOpen = ref(false)
+const isSettingsPanelOpen = ref(false)
+const isNotificationsPanelOpen = ref(false)
+const isActivityPanelOpen = ref(false)
 
 export default function useState() {
   return {
@@ -39,5 +42,8 @@ export default function useState() {
     isSidebarOpen,
     toggleSidebar,
     isSearchModalOpen,
+    isSettingsPanelOpen,
+    isNotificationsPanelOpen,
+    isActivityPanelOpen,
   }
 }
