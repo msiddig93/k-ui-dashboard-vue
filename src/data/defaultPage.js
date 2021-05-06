@@ -69,7 +69,7 @@ const visitorsBrowsers = [
   {
     browser: 'Edge',
     count: 3000,
-    color: '#00dd00',
+    color: '#10B981',
   },
   {
     browser: 'Safari',
