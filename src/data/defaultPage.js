@@ -156,24 +156,24 @@ const mountMap = () => {
     circle2.radius = 3
     circle2.propertyFields.fill = 'color'
 
-    // pulse animation. lead to shity performance
-    // circle2.events.on('inited', function (event) {
-    //   animateBullet(event.target)
-    // })
+    // pulse animation. lead to bad performance
+    circle2.events.on('inited', function (event) {
+      animateBullet(event.target)
+    })
 
-    // function animateBullet(circle) {
-    //   let animation = circle.animate(
-    //     [
-    //       { property: 'scale', from: 1, to: 5 },
-    //       { property: 'opacity', from: 1, to: 0 },
-    //     ],
-    //     1000,
-    //     am4core.ease.circleOut
-    //   )
-    //   animation.events.on('animationended', function (event) {
-    //     animateBullet(event.target.object)
-    //   })
-    // }
+    function animateBullet(circle) {
+      let animation = circle.animate(
+        [
+          { property: 'scale', from: 1, to: 5 },
+          { property: 'opacity', from: 1, to: 0 },
+        ],
+        1000,
+        am4core.ease.circleOut
+      )
+      animation.events.on('animationended', function (event) {
+        animateBullet(event.target.object)
+      })
+    }
 
     let colorSet = new am4core.ColorSet()
 

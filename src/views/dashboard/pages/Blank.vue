@@ -25,7 +25,7 @@
     <!-- Content -->
     <div>
       <h1 class="title-1 text-contrast-high">
-        Start build your awesome project!
+        Start building your awesome project!
       </h1>
     </div>
   </AppLayout>
