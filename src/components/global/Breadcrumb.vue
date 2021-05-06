@@ -9,19 +9,16 @@
         <router-link
           v-if="!item.current"
           :to="item.link"
-          class="text-light-text-highlight dark:text-dark-text-highlight hover:underline"
+          class="text-highlight hover:underline"
         >
           {{ item.title }}
         </router-link>
         <ChevronRightIcon
           v-if="!item.current"
           aria-hidden="true"
-          class="w-4 h-4 ml-2 rtl:ml-0 rtl:mr-2 rtl:transform rtl:rotate-180"
+          class="w-4 h-4 ml-2 text-contrast-high rtl:ml-0 rtl:mr-2 rtl:transform rtl:rotate-180"
         />
-        <span
-          v-if="item.current"
-          class="text-light-text-contrast-high dark:text-dark-text-contrast-high"
-        >
+        <span v-if="item.current" class="text-contrast-high">
           {{ item.title }}
         </span>
       </li>

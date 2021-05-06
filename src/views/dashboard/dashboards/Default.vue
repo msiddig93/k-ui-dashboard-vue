@@ -35,13 +35,66 @@
             :card="card"
           />
         </section>
+
+        <!-- Map card -->
+        <Card title="Visitors by Location" :moreItems="cardMoreActions">
+          <!-- Map -->
+          <div id="worldMap" class="w-full h-64 overflow-hidden md:h-72"></div>
+
+          <!-- Circles -->
+          <!-- x-data="{ circumference: 50 * 2 * Math.PI}" -->
+          <div class="grid grid-cols-2 gap-4 mt-8 md:grid-cols-4">
+            <ProgressCircle
+              v-for="(location, i) in visitorsLocations"
+              :key="i"
+              :item="location"
+            />
+          </div>
+        </Card>
       </div>
 
       <!--  -->
       <div
         class="grid grid-cols-1 gap-6 md:grid-cols-2 xl:grid-cols-1 xl:col-span-1"
       >
-        <!--  -->
+        <!-- Browsers card -->
+        <Card title="Visitors by Browser" :moreItems="cardMoreActions">
+          <!-- Chart -->
+          <div class="relative flex items-center justify-center mt-2 h-72">
+            <canvas id="browsersChart"></canvas>
+          </div>
+
+          <!-- Legends -->
+          <ul class="grid grid-cols-2 gap-3 p-6">
+            <li
+              class="flex items-center"
+              v-for="(browser, i) in visitorsBrowsers"
+              :key="i"
+            >
+              <span
+                class="inline-block px-4 py-1 mr-3 rtl:mr-0 rtl:ml-3"
+                :style="`background-color: ${browser.color}`"
+              ></span>
+              <span class="text-base font-medium" x-text="browser.browser">
+                {{ browser.browser }}
+              </span>
+            </li>
+          </ul>
+        </Card>
+
+        <!-- Social traffic card -->
+        <Card title="Social Media Traffic" :moreItems="cardMoreActions">
+          <ul class="space-y-6">
+            <li
+              class="flex items-center justify-between"
+              v-for="({ title, count }, i) in socialMediaTraffic"
+              :key="i"
+            >
+              <span class="text-lg font-medium">{{ title }}</span>
+              <span class="text-base font-medium">{{ count }}</span>
+            </li>
+          </ul>
+        </Card>
       </div>
     </div>
   </AppLayout>
@@ -51,7 +104,17 @@
 import AppLayout from '../../../components/layouts/AppLayout.vue'
 import Breadcrumb from '../../../components/global/Breadcrumb.vue'
 import DefaultStatisticsCard from '../../../components/cards/DefaultStatisticsCard.vue'
-import { quickStatisticsCards } from '../../../data/defaultPage'
+import Card from '../../../components/cards/Card.vue'
+import ProgressCircle from '../../../components/global/ProgressCircle.vue'
+import {
+  quickStatisticsCards,
+  mountMap,
+  mountBrowsersChart,
+  visitorsLocations,
+  visitorsBrowsers,
+  socialMediaTraffic,
+} from '../../../data/defaultPage'
+import { onMounted } from 'vue'
 
 const breadcrumbItems = [
   {
@@ -68,6 +131,20 @@ const breadcrumbItems = [
     title: 'Default',
     current: true,
     link: { name: 'DefaultDashboard' },
+  },
+]
+
+onMounted(() => {
+  mountMap()
+})
+onMounted(() => {
+  mountBrowsersChart()
+})
+
+const cardMoreActions = [
+  {
+    title: 'View All',
+    action: { name: 'DefaultDashboard' },
   },
 ]
 </script>

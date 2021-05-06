@@ -28,4 +28,208 @@ const quickStatisticsCards = [
   },
 ]
 
-export { quickStatisticsCards }
+const visitorsLocations = [
+  {
+    country: 'Egypt',
+    latitude: 30.0571,
+    longitude: 31.2272,
+    percent: 40,
+  },
+  {
+    country: 'Australia',
+    latitude: -33.865143,
+    longitude: 151.2099,
+    percent: 30,
+  },
+  {
+    country: 'Russia',
+    latitude: 55.7558,
+    longitude: 37.6176,
+    percent: 20,
+  },
+  {
+    country: 'USA',
+    latitude: 38.8921,
+    longitude: -77.0241,
+    percent: 10,
+  },
+]
+
+const visitorsBrowsers = [
+  {
+    browser: 'Firefox',
+    count: 7000,
+    color: '#1c64f2',
+  },
+  {
+    browser: 'Chrome',
+    count: 10000,
+    color: '#0694a2',
+  },
+  {
+    browser: 'Edge',
+    count: 3000,
+    color: '#00dd00',
+  },
+  {
+    browser: 'Safari',
+    count: 5000,
+    color: '#7e3af2',
+  },
+]
+
+const socialMediaTraffic = [
+  {
+    title: 'Twitter',
+    count: '3,550',
+  },
+  {
+    title: 'Facebook',
+    count: '2,236',
+  },
+  {
+    title: 'Instagram',
+    count: '1,790',
+  },
+  {
+    title: 'Linkedin',
+    count: '62',
+  },
+  {
+    title: 'Other',
+    count: '50',
+  },
+  {
+    title: 'Total',
+    count: '7,088',
+  },
+]
+
+// Map
+const mountMap = () => {
+  am4core.ready(function () {
+    // Themes begin
+    am4core.useTheme(am4themes_animated)
+    // Themes end
+
+    // Create map instance
+    let worldMapChart = am4core.create('worldMap', am4maps.MapChart)
+
+    // Set map definition
+    worldMapChart.geodata = am4geodata_worldLow
+
+    // Set projection
+    worldMapChart.projection = new am4maps.projections.Miller()
+
+    // Create map polygon series
+    let polygonSeries = worldMapChart.series.push(
+      new am4maps.MapPolygonSeries()
+    )
+
+    // Exclude Antartica
+    polygonSeries.exclude = ['AQ']
+
+    // Make map load polygon (like country names) data from GeoJSON
+    polygonSeries.useGeodata = true
+
+    // Configure series
+    let polygonTemplate = polygonSeries.mapPolygons.template
+    polygonTemplate.tooltipText = '{name}'
+    polygonTemplate.polygon.fillOpacity = 0.6
+
+    // Create hover state and set alternative fill color
+    let hs = polygonTemplate.states.create('hover')
+    hs.properties.fill = worldMapChart.colors.getIndex(0)
+
+    // Add image series
+    let imageSeries = worldMapChart.series.push(new am4maps.MapImageSeries())
+    imageSeries.mapImages.template.propertyFields.longitude = 'longitude'
+    imageSeries.mapImages.template.propertyFields.latitude = 'latitude'
+    imageSeries.mapImages.template.tooltipText = '{title}'
+    imageSeries.mapImages.template.propertyFields.url = 'url'
+
+    let circle = imageSeries.mapImages.template.createChild(am4core.Circle)
+    circle.radius = 3
+    circle.propertyFields.fill = 'color'
+
+    let circle2 = imageSeries.mapImages.template.createChild(am4core.Circle)
+    circle2.radius = 3
+    circle2.propertyFields.fill = 'color'
+
+    // pulse animation. lead to shity performance
+    // circle2.events.on('inited', function (event) {
+    //   animateBullet(event.target)
+    // })
+
+    // function animateBullet(circle) {
+    //   let animation = circle.animate(
+    //     [
+    //       { property: 'scale', from: 1, to: 5 },
+    //       { property: 'opacity', from: 1, to: 0 },
+    //     ],
+    //     1000,
+    //     am4core.ease.circleOut
+    //   )
+    //   animation.events.on('animationended', function (event) {
+    //     animateBullet(event.target.object)
+    //   })
+    // }
+
+    let colorSet = new am4core.ColorSet()
+
+    imageSeries.data = visitorsLocations.map((location) => {
+      return {
+        title: location.country,
+        latitude: location.latitude,
+        longitude: location.longitude,
+        color: colorSet.next(),
+      }
+    })
+  })
+}
+
+// Doughnut chart "browsers chart"
+const mountBrowsersChart = () => {
+  new Chart(document.getElementById('browsersChart'), {
+    type: 'doughnut',
+    data: {
+      labels: visitorsBrowsers.map((browser) => {
+        return [browser.browser]
+      }),
+      datasets: [
+        {
+          data: visitorsBrowsers.map((browser) => {
+            return [browser.count]
+          }),
+          backgroundColor: visitorsBrowsers.map((browser) => {
+            return [browser.color]
+          }),
+          hoverBackgroundColor: 'blue',
+          borderWidth: 0,
+          weight: 0.5,
+        },
+      ],
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      cutoutPercentage: 80,
+      legend: false,
+      title: {
+        display: false,
+      },
+      animation: {
+        animateScale: true,
+        animateRotate: true,
+      },
+    },
+  })
+}
+export {
+  quickStatisticsCards,
+  visitorsLocations,
+  mountMap,
+  visitorsBrowsers,
+  mountBrowsersChart,
+  socialMediaTraffic,
+}
