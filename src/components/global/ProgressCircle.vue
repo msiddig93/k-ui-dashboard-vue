@@ -33,7 +33,7 @@
         {{ `${item.percent}%` }}
       </span>
     </div>
-    <h4 class="title-3">{{ item.title || item.country }}</h4>
+    <h4 class="title-3 text-contrast-high">{{ item.title || item.country }}</h4>
   </div>
 </template>
 

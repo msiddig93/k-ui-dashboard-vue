@@ -75,7 +75,10 @@
                 class="inline-block px-4 py-1 mr-3 rtl:mr-0 rtl:ml-3"
                 :style="`background-color: ${browser.color}`"
               ></span>
-              <span class="text-base font-medium" x-text="browser.browser">
+              <span
+                class="text-body-base text-contrast-medium"
+                x-text="browser.browser"
+              >
                 {{ browser.browser }}
               </span>
             </li>
@@ -86,12 +89,12 @@
         <Card title="Social Media Traffic" :moreItems="cardMoreActions">
           <ul class="space-y-6">
             <li
-              class="flex items-center justify-between"
+              class="flex items-center justify-between text-contrast-high"
               v-for="({ title, count }, i) in socialMediaTraffic"
               :key="i"
             >
-              <span class="text-lg font-medium">{{ title }}</span>
-              <span class="text-base font-medium">{{ count }}</span>
+              <span class="text-body-strong">{{ title }}</span>
+              <span class="text-body-base">{{ count }}</span>
             </li>
           </ul>
         </Card>
